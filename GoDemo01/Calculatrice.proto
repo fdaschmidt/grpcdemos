@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "fredericschmidt.fr/GoDemo01/calculatrice";
+
+package Calculator;
+
+service CalculatorService {
+  rpc AddOperation (ValuesCalculatorRequest) returns (ResultCalculatorResponse);
+  rpc SubOperation (ValuesCalculatorRequest) returns (ResultCalculatorResponse);
+  rpc TableOperation (TableCalculatorRequest) returns (TableCalculatorResponse);
+}
+
+message ResultCalculatorResponse {
+  int32 Result = 1;
+}
+
+message ValuesCalculatorRequest {
+  int32 TermX = 1;
+  int32 TermY = 2;
+}
+
+message TableCalculatorRequest {
+  int32 Multiplicand = 1;
+  int32 Multiplier = 2;
+}
+
+message TableCalculatorResponse {
+  repeated OneLineInTableResponse LineOfTable = 1;
+}
+
+message OneLineInTableResponse {
+  int32 Multiplicand  = 1;
+  int32 Multiplier = 2;
+  int32 Product = 3;
+}
